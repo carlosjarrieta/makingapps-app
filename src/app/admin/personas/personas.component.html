@@ -1,0 +1,62 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <app-header [ruta]="'Personas'"></app-header>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <a [routerLink]="['create']" routerLinkActive="active" class="btn btn-info">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Registrar Persona
+          </a>
+        </div>
+
+        <div class="panel-body">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre
+                </th>
+                <th>Apellido
+                </th>
+                <th>NIT
+                </th>
+                <th>Telefono
+                </th>
+                <th>Area
+                </th>
+
+                <th>
+                  ACCIONES
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let persona of personas | orderBy: key : reverse; let i = index">
+                <td>{{persona.id}}</td>
+                <td>{{persona.name}}</td>
+                <td>{{persona.surname}}</td>
+                <td>{{persona.nit}}</td>
+                <td>{{persona.phone}}</td>
+                <td>{{persona.area.name}}</td>
+                <td>
+                  <a [routerLink]="['edit',persona.id]" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-edit"></span> Editar
+                  </a>
+
+
+                  <button class="btn btn-danger" (click)="deletePersona(persona)">
+                    <span class="glyphicon glyphicon-trash"></span> Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+</div>
